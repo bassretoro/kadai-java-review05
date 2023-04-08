@@ -30,7 +30,7 @@ public class Review05 {
                     "20011004"
                     );
             // 4. DBとやりとりする窓口（Statementオブジェクト）の作成
-            String sql = "SELECT * FROM person  whtre ID = ?";
+            String sql = "SELECT * FROM person  where ID = ?";
             pstmt = con.prepareStatement(sql);
 
             System.out.print("検索キーワードを入力してください > ");
@@ -57,35 +57,35 @@ public class Review05 {
             //エラー発生時の表示（データベースに接続できない、見つからない異常が発生したとき）
             System.err.println("データベースに異常が発生しました。");
             e.printStackTrace();
-    } finally { //データベースとの切断処理は途中で例外が発生しても、しなくても、実行できるよう
-        // 8. 接続を閉じる
-        if( rs != null ){
-            try {
-                rs.close();
-            } catch (SQLException e) {
-                System.err.println("ResultSetを閉じるときにエラーが発生しました。");
-                e.printStackTrace();
+        } finally { //データベースとの切断処理は途中で例外が発生しても、しなくても、実行できるよう
+            // 8. 接続を閉じる
+            if( rs != null ){
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    System.err.println("ResultSetを閉じるときにエラーが発生しました。");
+                    e.printStackTrace();
+                }
             }
-        }
-        if( pstmt != null ){
-            try {
-                pstmt.close();
-            } catch (SQLException e) {
-                System.err.println("Statementを閉じるときにエラーが発生しました。");
-                e.printStackTrace();
+            if( pstmt != null ){
+                try {
+                    pstmt.close();
+                } catch (SQLException e) {
+                    System.err.println("Statementを閉じるときにエラーが発生しました。");
+                    e.printStackTrace();
+                }
             }
-        }
-        if( con != null ){
-            try {
-                con.close();
-            } catch (SQLException e) {
-                System.err.println("データベース切断時にエラーが発生しました。");
-                e.printStackTrace();
+            if( con != null ){
+                try {
+                    con.close();
+                } catch (SQLException e) {
+                    System.err.println("データベース切断時にエラーが発生しました。");
+                    e.printStackTrace();
+                }
+
             }
 
         }
-
-    }
 
     }
     private static String keyIn() {
@@ -98,6 +98,7 @@ public class Review05 {
         }
         return line;
     }
+
 
 }
 
